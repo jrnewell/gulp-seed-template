@@ -1,6 +1,6 @@
 # Gulp Starter Template
 
-Starter project using the gulp build system to make single page apps for angular.js (or can be modified for any other front-end library).  Also includes the following
+Starter project using the gulp build system to make single page apps for angular.js (or can be modified for any other front-end library).  Also includes local copies of the following
 - Jquery
 - Modernizr
 - Bootstrap
