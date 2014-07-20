@@ -49,13 +49,12 @@ gulp.task "vendor-fonts", ->
 gulp.task "vendor", ["vendor-js", "vendor-css", "vendor-img", "vendor-fonts"]
 
 #
-# build tasks
+# build src tasks
 #
 
 # scripts (browserify)
 
 gulp.task "scripts", () ->
-
   bundleMethod = (if shared.isWatching then watchify else browserify)
 
   bundler = bundleMethod
@@ -75,13 +74,13 @@ gulp.task "scripts", () ->
   bundle = () ->
     return bundler
       .bundle {debug: true}
+      .on 'error', handleErrors
+      .pipe(plumber())
       .pipe source(browserifyMain.dest)
       .pipe gulp.dest(destPaths.scripts)
       .pipe gulpIf(shared.isWatching, liveReload(tlr))
 
-
-  if (shared.isWatching)
-    bundler.on "update", bundle
+  bundler.on "update", bundle if shared.isWatching
 
   return bundle()
 

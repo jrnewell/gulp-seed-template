@@ -18,10 +18,13 @@ gulp.task "server", ["build"], (callback) ->
     gutil.log "connect server listening on port " + httpPort
     callback()
 
-gulp.task "watch", ["server"], (callback) ->
+gulp.task "watch", (callback) ->
 
   # set flag, so liveReload will function
   shared.isWatching = true
+
+  # need to run this after the watch flag is set
+  gulp.start "server"
 
   tlr.listen lrPort, ->
     gutil.log "tiny-lr server listening on port #{lrPort}"
