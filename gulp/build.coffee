@@ -77,6 +77,7 @@ gulp.task "scripts", () ->
       .bundle {debug: true}
       .pipe source(browserifyMain.dest)
       .pipe gulp.dest(destPaths.scripts)
+      .pipe gulpIf(shared.isWatching, liveReload(tlr))
 
 
   if (shared.isWatching)

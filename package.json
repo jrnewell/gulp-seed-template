@@ -45,7 +45,7 @@
     "gulp-if": "*",
     "gulp-min-map": "*",
     "gulp-notify": "*",
-    "gulp-livereload": "*",
+    "gulp-livereload": "~1.5.0",
     "run-sequence": "*",
     "connect": "~2.23.0",
     "connect-livereload": "*",

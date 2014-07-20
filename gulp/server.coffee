@@ -27,8 +27,6 @@ gulp.task "watch", ["server"], (callback) ->
     gutil.log "tiny-lr server listening on port #{lrPort}"
     callback()
 
-  gulp.watch watchPaths.coffee, ["coffee"]
-  gulp.watch watchPaths.js,     ["js"]
   gulp.watch watchPaths.stylus, ["stylus"]
   gulp.watch watchPaths.css,    ["css"]
   gulp.watch watchPaths.jade,   ["jade"]
