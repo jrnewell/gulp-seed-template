@@ -58,6 +58,7 @@ jadeLocals =
     "bootstrap.css"
     "bootflat.css"
     "font-awesome.css"
+    "app.css"
   ]
   scripts: [
     "jquery-2.1.1.js"

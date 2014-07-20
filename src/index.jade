@@ -1,5 +1,5 @@
 doctype html
-html(lang="en")
+html(lang="en" ng-app="MyProject")
   head
 
     include ./includes/_meta
@@ -12,8 +12,8 @@ html(lang="en")
     for js in scripts
       script(type="text/javascript" src="/js/#{js}")
 
-  body
+  body(ng-cloak="", ng-controller="AppCtrl")
     .container
       .row
         .col-md-12
-          .h3 Hello World
+          .h3 {{ message }}
