@@ -77,7 +77,7 @@ httpURL = "http://127.0.0.1:" + httpPort
 lrPort = 35729
 
 # copyright
-headerText = "/***\n * \n * Group Assigner 2014 - Copyright James Newell\n *\n ***/\n"
+headerText = "/***\n * \n * My Project 2014 - Copyright James Newell\n *\n ***/\n"
 
 # shared vars
 shared = isWatching: false

@@ -2,7 +2,7 @@
   "name": "gulp-seed-template",
   "version": "0.0.1",
   "author": "James Newell <james.newell@gmail.com>",
-  "description": "Starter project to make single page apps using angular gulp (coffeescript, stylus and jade)",
+  "description": "Starter project to make single page apps using angular and gulp (coffeescript, stylus and jade)",
   "repository": {
     "type": "git",
     "url": "https://github.org/jnewell/gulp-seed-template.git"
