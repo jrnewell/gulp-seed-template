@@ -1,4 +1,8 @@
 tlr = require("tiny-lr")()
+fs = require "fs"
+
+getVendorDirs = () ->
+  "vendor/#{dir}" for dir in fs.readdirSync("vendor")
 
 # gulp source
 srcPaths =
@@ -17,24 +21,14 @@ srcPaths =
   html:     "src/**/*.html"
   images:   "src/img/**/*"
   fonts:    "src/fonts/**/*"
-  vendors: [
-            "vendor/angular"
-            "vendor/bootflat"
-            "vendor/bootstrap"
-            "vendor/font-awesome"
-            "vendor/jquery"
-            "vendor/modernizr"
-  ]
+  vendors:  getVendorDirs()
 
 watchPaths =
   coffee: srcPaths.coffee
   js:     srcPaths.js
-  stylus: srcPaths.stylus
+  stylus: srcPaths.stylus[0]
   css:    srcPaths.css
-  jade: [
-          srcPaths.jade[0]
-          "gulp/constants.coffee"
-  ]
+  jade:   srcPaths.jade[0]
   html:   srcPaths.html
   images: srcPaths.images
   fonts:  srcPaths.fonts
@@ -70,7 +64,6 @@ jadeLocals =
     "angular.js"
     "app.js"
   ]
-
 
 # ports and address
 httpPort = 8080
