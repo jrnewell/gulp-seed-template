@@ -2,6 +2,7 @@ gulp = require "gulp"
 gutil = require "gulp-util"
 plumber = require "gulp-plumber"
 gopen = require "gulp-open"
+events = require "events"
 constants = require "./constants"
 
 {tlr, httpPort, httpURL, lrPort, watchPaths, shared} = constants
@@ -10,12 +11,15 @@ constants = require "./constants"
 # server-related tasks
 #
 
+notifier = new events.EventEmitter()
+
 gulp.task "server", ["build"], (callback) ->
   connect = require("connect")
   http = require("http")
   server = connect().use(require("connect-livereload")(port: lrPort)).use(connect.static("./build"))
   http.createServer(server).listen httpPort, ->
     gutil.log "connect server listening on port " + httpPort
+    notifier.emit('start')
     callback()
 
 gulp.task "watch", (callback) ->
@@ -42,8 +46,14 @@ gulp.task "open", ->
     .pipe(plumber())
     .pipe gopen("", url: httpURL)
 
+gulp.task "debug", ["watch"], (callback) ->
+  notifier.on 'start', () ->
+    gulp.start "open"
+    callback()
+
 module.exports = [
   "server"
   "watch"
   "open"
+  "debug"
 ]
