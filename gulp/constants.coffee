@@ -62,6 +62,8 @@ jadeLocals =
     "bootstrap.js"
     "icheck.min.js"
     "angular.js"
+    "lodash.js"
+    "moment.js"
     "app.js"
   ]
 
